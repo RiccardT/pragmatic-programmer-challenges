@@ -1,0 +1,13 @@
+<!--# Time BNF Notation-->
+
+<!-- - 4pm, -->
+<!-- - 7:38pm, -->
+<!-- - 23:42, -->
+<!-- - 3:16, -->
+<!-- - 3:16am -->
+
+<time-12-hour-format> ::= <hour-part> <day-night-part> <EOL> |
+    <hour-part> ":" <minute-part> <day-night-part> <EOL> |
+    <hour-part> ":" <minute-part> <EOL>
+
+<time-24-hour-format> ::= <hour-part> ":" <minute-part>
