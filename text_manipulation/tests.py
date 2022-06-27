@@ -1,6 +1,7 @@
+import os.path
 import unittest
 
-from yaml_to_json_file_utils import get_dict_object_from_yaml_file, write_yaml_dict_to_json_file
+from yaml_to_json_file_utils import get_dict_object_from_yaml_file, write_yaml_dict_to_json_file, delete_file
 
 
 class TestYamlFunctions(unittest.TestCase):
@@ -36,6 +37,13 @@ class TestYamlFunctions(unittest.TestCase):
             expected_json_string = expected_json_file.read()
             actual_json_string = actual_json_file.read()
             self.assertEqual(expected_json_string, actual_json_string)
+
+    def test_file_delete(self):
+        path_to_file_to_be_deleted = "test_files/file_to_be_deleted.json"
+        with open(path_to_file_to_be_deleted, 'w') as file_to_be_deleted:
+            file_to_be_deleted.write("Ahhh I'm about to be destroyed!")
+        delete_file(path_to_file_to_be_deleted)
+        self.assertFalse(os.path.isfile(path_to_file_to_be_deleted))
 
 
 if __name__ == '__main__':

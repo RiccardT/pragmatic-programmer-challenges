@@ -1,4 +1,5 @@
 import json
+import os
 
 from ruamel.yaml import YAML
 
@@ -21,6 +22,12 @@ def write_json_string_to_file_with_name(json_string: str, file_name: str) -> Non
         json.dump(json_string, json_file, default=lambda o: o.__dict__, sort_keys=True, indent=2)
 
 
-# TODO: Create file deletion/replacement function
+def delete_file(file_path: str) -> None:
+    try:
+        os.remove(file_path)
+    except OSError as os_error:
+        print("Error: %s - %s." % (os_error.filename, os_error.strerror))
+
+
 # TODO: Create directory crawler
 # TODO: Create command line interface
