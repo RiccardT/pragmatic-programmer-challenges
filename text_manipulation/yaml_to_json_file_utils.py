@@ -17,11 +17,6 @@ def write_yaml_dict_to_json_file(yaml_dict: dict, file_name: str) -> None:
         json.dump(yaml_dict, json_file, indent=2)
 
 
-def write_json_string_to_file_with_name(json_string: str, file_name: str) -> None:
-    with open(file_name + '.json', 'w') as json_file:
-        json.dump(json_string, json_file, default=lambda o: o.__dict__, sort_keys=True, indent=2)
-
-
 def delete_file(file_path: str) -> None:
     try:
         os.remove(file_path)
